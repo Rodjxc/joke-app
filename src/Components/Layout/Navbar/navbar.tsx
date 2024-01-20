@@ -1,23 +1,38 @@
-// src/components/Navbar.js
-import { Layout, Menu, Button, Space } from 'antd';
-import "./navbar.css"
+import { Layout, Menu, Space } from "antd";
+import DarkMode from "./DarkMode/DarkMode";
+import "./navbar.css";
+import { useDarkMode } from "../../../contexts/DarkModeContext";
 
 const { Header } = Layout;
 
 const Navbar: React.FC = () => {
+  const { darkMode } = useDarkMode();
+
   return (
-    <Header className="navbar">
+    <Header className={`navbar ${darkMode ? "dark-mode" : ""}`}>
       {/* Logo */}
       <Space>
         <div className="navbar-logo">
-        <a href='#'><img src="/images/ELABlogo.webp" alt="Logo" className="logo-image" /></a> 
+          <a href="#">
+            <img
+              src="/images/ELABlogo.webp"
+              alt="Logo"
+              className="logo-image"
+            />
+          </a>
         </div>
       </Space>
-    
 
       {/* Middle */}
-      <Menu mode="horizontal" className="navbar-pages">
-        <Menu.Item key="submit" >
+      <Menu
+        mode="horizontal"
+        className="navbar-pages"
+        style={{
+          background: darkMode ? "#333" : "",
+          color: darkMode ? "white" : "inherit",
+        }}
+      >
+        <Menu.Item key="submit">
           <a>Submit Jokes</a>
         </Menu.Item>
         <Menu.Item key="about">
@@ -28,28 +43,25 @@ const Navbar: React.FC = () => {
         </Menu.Item>
       </Menu>
 
-      {/* Language*/}
-      <div className="navbar-language">
+      {/* Language */}
+      <section className="navbar-language">
         <Space>
-            <a href='#'><img src="/images/gb.png" alt="en-flag" className="language-flag" /></a> 
-            <a href='#'><img src="/images/no.png" alt="no-flag" className="language-flag" /></a> 
-            <a href='#'><img src="/images/es.png" alt="es-flag" className="language-flag" /></a> 
+          <a href="#">
+            <img src="/images/gb.png" alt="en-flag" className="language-flag" />
+          </a>
+          <a href="#">
+            <img src="/images/no.png" alt="no-flag" className="language-flag" />
+          </a>
+          <a href="#">
+            <img src="/images/es.png" alt="es-flag" className="language-flag" />
+          </a>
         </Space>
-      </div>
+      </section>
 
       {/* Dark Mode Button */}
-      <Space>
-      <div className="navbar-night-mode">
-        <Button className="night-mode-button">
-          Night Mode
-        </Button>
-      </div>
-      </Space>
-     
+      <DarkMode />
     </Header>
   );
 };
 
 export default Navbar;
-
-

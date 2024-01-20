@@ -17,7 +17,9 @@
     display: block;
     gap: 100px; 
     flex-grow: 1;
+    border-bottom: 1px solid #E5E7EB;
   }
+  
   .navbar-language {
     margin-top: 10px;
   }
@@ -27,7 +29,9 @@
      width: 20px;
   }
   
-  .navbar-night-mode {
+  .dark-mode-toggle {
     margin-left: 15px;
   }
+
+
   
