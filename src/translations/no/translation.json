@@ -1,0 +1,16 @@
+{
+    "navbar": {
+      "submit": "Send inn vitser",
+      "about": "Om oss",
+      "video": "Video Spøker"
+    },
+    "menu": {
+      "overview": "Oversikt",
+      "joke": "Vits",
+      "fact": "Fakta",
+      "question": "Spørsmål",
+      "divider1": "Skillelinje",
+      "docs": "Dokumenter",
+      "help": "Hjelp"
+    }
+}

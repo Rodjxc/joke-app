@@ -10,6 +10,7 @@ import { Layout as AntdLayout, Menu, theme } from "antd";
 import { useDarkMode } from "../../contexts/DarkModeContext";
 import Navbar from "./Navbar/navbar";
 import "./display.css";
+import { useTranslation } from "react-i18next";
 
 const { Header, Content, Sider } = AntdLayout;
 
@@ -17,37 +18,36 @@ const items1 = [
   {
     key: "overview",
     icon: <PieChartOutlined />,
-    label: "Overview",
+    labelKey: "menu.overview",
   },
   {
     key: "joke",
     icon: <FormOutlined />,
-    label: "Joke",
+    labelKey: "menu.joke",
   },
   {
     key: "fact",
     icon: <SolutionOutlined />,
-    label: "Fact",
+    labelKey: "menu.fact",
   },
   {
     key: "question",
     icon: <QuestionOutlined />,
-    label: "Question",
+    labelKey: "menu.question",
   },
   {
     key: "divider1",
-    label: "Divider",
     isDivider: true,
   },
   {
     key: "docs",
     icon: <BookOutlined />,
-    label: "Docs",
+    labelKey: "menu.docs",
   },
   {
     key: "help",
     icon: <WarningOutlined />,
-    label: "Help",
+    labelKey: "menu.help",
   },
 ];
 
@@ -57,6 +57,7 @@ const CustomLayout = () => {
   } = theme.useToken();
 
   const { darkMode } = useDarkMode();
+  const { t } = useTranslation('translation');
 
   return (
     <AntdLayout>
@@ -64,7 +65,7 @@ const CustomLayout = () => {
         <Navbar />
       </Header>
       <AntdLayout>
-        <Sider width={256} >
+        <Sider width={256}>
           <Menu
             mode="inline"
             defaultSelectedKeys={["overview"]}
@@ -73,18 +74,19 @@ const CustomLayout = () => {
               height: "100%",
               borderRight: 0,
               background: darkMode ? "#333" : colorBgContainer,
-              color: darkMode ? "white" : "inherit"
+              color: darkMode ? "white" : "",
             }}
           >
             {items1.map((item) => {
               if (item.isDivider) {
                 return <Menu.Divider key={item.key} />;
               }
-              return (
+
+              return item.labelKey ? (
                 <Menu.Item key={item.key} icon={item.icon}>
-                  {item.label}
+                  {t(item.labelKey)}
                 </Menu.Item>
-              );
+              ) : null;
             })}
           </Menu>
         </Sider>
@@ -92,7 +94,7 @@ const CustomLayout = () => {
         <AntdLayout
           style={{
             padding: "24px 24px 24px",
-            background: darkMode ? "black" : "inherit",
+            background: darkMode ? "#151313" : "",
           }}
         >
           <Content

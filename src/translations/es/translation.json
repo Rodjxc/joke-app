@@ -1,0 +1,17 @@
+{
+    "navbar": {
+      "submit": "Enviar Bromas",
+      "about": "Acerca de",
+      "video": "Bromas en Video"
+    },
+    "menu": {
+      "overview": "Resumen",
+      "joke": "Broma",
+      "fact": "Hecho",
+      "question": "Pregunta",
+      "divider1": "Separador",
+      "docs": "Documentos",
+      "help": "Ayuda"
+    }
+  }
+  

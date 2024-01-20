@@ -2,11 +2,18 @@ import { Layout, Menu, Space } from "antd";
 import DarkMode from "./DarkMode/DarkMode";
 import "./navbar.css";
 import { useDarkMode } from "../../../contexts/DarkModeContext";
+import {useTranslation} from 'react-i18next'
+import i18n from "../../../translations/i18n";
 
 const { Header } = Layout;
 
+
 const Navbar: React.FC = () => {
   const { darkMode } = useDarkMode();
+  const { t } = useTranslation('translation');
+  const changeLanguage = (languageCode: string) => {
+    i18n.changeLanguage(languageCode);
+  };
 
   return (
     <Header className={`navbar ${darkMode ? "dark-mode" : ""}`}>
@@ -33,28 +40,28 @@ const Navbar: React.FC = () => {
         }}
       >
         <Menu.Item key="submit">
-          <a>Submit Jokes</a>
+          <a>{t('navbar.submit')}</a>
         </Menu.Item>
         <Menu.Item key="about">
-          <a>About</a>
+          <a>{t('navbar.about')}</a>
         </Menu.Item>
         <Menu.Item key="video">
-          <a>Video Pranks</a>
+          <a>{t('navbar.video')}</a>
         </Menu.Item>
       </Menu>
 
       {/* Language */}
       <section className="navbar-language">
         <Space>
-          <a href="#">
+          <button onClick={()=> changeLanguage('en')} className="flag-button">
             <img src="/images/gb.png" alt="en-flag" className="language-flag" />
-          </a>
-          <a href="#">
+          </button>
+          <button onClick={()=> changeLanguage('no')} className="flag-button">
             <img src="/images/no.png" alt="no-flag" className="language-flag" />
-          </a>
-          <a href="#">
+          </button>
+          <button onClick={()=> changeLanguage('es')} className="flag-button">
             <img src="/images/es.png" alt="es-flag" className="language-flag" />
-          </a>
+          </button>
         </Space>
       </section>
 
