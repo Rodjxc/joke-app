@@ -1,6 +1,8 @@
-import { useQuery } from "react-query";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { Table } from "antd";
+import { Table, Modal, Button, Form, Input, TablePaginationConfig } from "antd";
+import { useDarkMode } from "../../contexts/DarkModeContext";
+import { useTranslation } from "react-i18next";
 
 interface Joke {
   id: number;
@@ -16,52 +18,111 @@ interface Joke {
   };
 }
 
-const retrieveJokes = async () => {
-  const response = await axios.get(
-    "https://v2.jokeapi.dev/joke/Any?type=single&idRange=0-319&amount=10"
-  );
-  return response.data.jokes.map((joke: Joke) => ({
-    key: joke.id,
-    category: joke.category,
-    joke: joke.joke,
-    flags: joke.flags,
-  }));
-};
+const App: React.FC = () => {
+  const [jokes, setJokes] = useState<Joke[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
+  const totalJokes = 319;
+  const { darkMode } = useDarkMode();
+  const { t } = useTranslation();
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [editingJoke, setEditingJoke] = useState<Joke | null>(null);
 
-const DisplayJokes = () => {
-  const { data: jokes, error, isLoading } = useQuery("jokesData", retrieveJokes);
+  const fetchJokes = useCallback(async () => {
+    setLoading(true);
+    const startIndex = (currentPage - 1) * pageSize;
+    const response = await axios.get(
+      `https://v2.jokeapi.dev/joke/Any?type=single&idRange=${startIndex}-319&amount=${pageSize}`
+    );
+    setLoading(false);
+    setJokes(response.data.jokes);
+  }, [currentPage, pageSize]);
+
+  useEffect(() => {
+    fetchJokes();
+  }, [fetchJokes]);
+
+  const handleSave = () => {
+    if (editingJoke) {
+      // Logic to update the joke in the jokes state
+      // Example:
+      // setJokes(prevJokes => prevJokes.map(joke => joke.id === editingJoke.id ? editingJoke : joke));
+    }
+    setIsModalVisible(false);
+  };
+
+  const handleTableChange = (newPagination: TablePaginationConfig) => {
+    setCurrentPage(newPagination.current || 1);
+    setPageSize(newPagination.pageSize || 10);
+  };
+
+  const openEditModal = (joke: Joke) => {
+    setEditingJoke(joke);
+    setIsModalVisible(true);
+  };
 
   const columns = [
     {
-      title: "Category",
+      title: t("tableHeaders.category"),
       dataIndex: "category",
       key: "category",
     },
     {
-      title: "Joke",
+      title: t("tableHeaders.joke"),
       dataIndex: "joke",
       key: "joke",
     },
     {
-      title: "Flags",
+      title: t("tableHeaders.flag"),
       dataIndex: "flags",
       key: "flags",
       render: (flags: Joke["flags"]) => (
         <ul>
-          {Object.entries(flags).map(([flag, value]) => (
-            <li key={flag}>
-              {flag}: {value ? "Yes" : "No"}
-            </li>
-          ))}
+          {Object.entries(flags)
+            .filter(([, value]) => value)
+            .map(([flag]) => (
+              <li key={flag}>{flag}</li>
+            ))}
         </ul>
+      ),
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record: Joke) => (
+        <Button onClick={() => openEditModal(record)}>Edit</Button>
       ),
     },
   ];
 
-  if (isLoading) return <div>Fetching jokes...</div>;
-  if (error) return <div>An error occurred</div>;
-
-  return <Table dataSource={jokes} columns={columns} />;
+  return (
+    <div className={darkMode ? "dark-mode" : ""}>
+      <Table
+        columns={columns}
+        dataSource={jokes}
+        pagination={{ current: currentPage, pageSize: pageSize, total: totalJokes }}
+        loading={loading}
+        onChange={handleTableChange}
+        style={{ background: darkMode ? "#333" : "white", color: darkMode ? "white" : "black" }}
+      />
+      <Modal
+        title="Edit Joke"
+        visible={isModalVisible}
+        onOk={handleSave}
+        onCancel={() => setIsModalVisible(false)}
+      >
+        <Form
+          initialValues={{ ...editingJoke }}
+        >
+          <Form.Item name="joke" label="Joke">
+            <Input />
+          </Form.Item>
+          {/* Add form items for each flag */}
+        </Form>
+      </Modal>
+    </div>
+  );
 };
 
-export default DisplayJokes;
+export default App;

@@ -12,6 +12,11 @@
       "divider1": "Separador",
       "docs": "Documentos",
       "help": "Ayuda"
+    },
+    "tableHeaders": {
+      "category": "Categoría",
+      "joke": "Broma",
+      "flag": "Etiqueta"
     }
   }
   

@@ -1,17 +1,21 @@
 {
-    "navbar": {
-      "submit": "Submit Jokes",
-      "about": "About",
-      "video": "Video Pranks"
-    },
-      "menu": {
-      "overview": "Overview",
-      "joke": "Joke",
-      "fact": "Fact",
-      "question": "Question",
-      "divider1": "Divider",
-      "docs": "Docs",
-      "help": "Help"
-    }
+  "navbar": {
+    "submit": "Submit Jokes",
+    "about": "About",
+    "video": "Video Pranks"
+  },
+  "menu": {
+    "overview": "Overview",
+    "joke": "Joke",
+    "fact": "Fact",
+    "question": "Question",
+    "divider1": "Divider",
+    "docs": "Docs",
+    "help": "Help"
+  },
+  "tableHeaders": {
+    "category": "Category",
+    "joke": "Joke",
+    "flag": "Flag"
   }
-  
+}

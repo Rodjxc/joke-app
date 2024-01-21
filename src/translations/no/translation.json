@@ -12,5 +12,10 @@
       "divider1": "Skillelinje",
       "docs": "Dokumenter",
       "help": "Hjelp"
+    },
+    "tableHeaders": {
+      "category": "Kategori",
+      "joke": "Vits",
+      "flag": "Tagger"
     }
 }

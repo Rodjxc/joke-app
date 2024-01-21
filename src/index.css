@@ -21,3 +21,17 @@ body {
   background-color: #333;
   color: white;}
 
+  .dark-mode .ant-table {
+    background-color: #333;
+    color: white;
+  }
+  
+  .dark-mode .ant-table-thead > tr > th {
+    background-color: #1d1d1d;
+    color: white;
+  }
+  
+  .dark-mode .ant-table-tbody > tr:hover > td {
+    background-color: #484848; /* Darker color for hover */
+    color: black; /* Keep text color white */
+  }

@@ -105,7 +105,6 @@ const CustomLayout = () => {
               minHeight: 600,
               background: darkMode ? "#333" : colorBgContainer,
               borderRadius: borderRadiusLG,
-              color: darkMode ? "white" : "inherit",
             }}
           >
             <DisplayJokes/>
