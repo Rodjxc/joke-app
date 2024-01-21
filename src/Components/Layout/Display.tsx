@@ -11,6 +11,7 @@ import { useDarkMode } from "../../contexts/DarkModeContext";
 import Navbar from "./Navbar/navbar";
 import "./display.css";
 import { useTranslation } from "react-i18next";
+import DisplayJokes from "../JokeApp/JokeApp";
 
 const { Header, Content, Sider } = AntdLayout;
 
@@ -107,8 +108,9 @@ const CustomLayout = () => {
               color: darkMode ? "white" : "inherit",
             }}
           >
-            Content
-          </Content>
+            <DisplayJokes/>
+            </ Content>
+          
         </AntdLayout>
       </AntdLayout>
     </AntdLayout>

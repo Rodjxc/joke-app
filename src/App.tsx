@@ -1,12 +1,13 @@
-import { DarkModeProvider } from './contexts/DarkModeContext';
-import CustomLayout from './Components/Layout/Display';
-import './App.css';
+import { DarkModeProvider } from "./contexts/DarkModeContext";
+import CustomLayout from "./Components/Layout/Display";
+import "./App.css";
+
 
 function App() {
   return (
-    <DarkModeProvider>
-      <CustomLayout />
-    </DarkModeProvider>
+      <DarkModeProvider>
+        <CustomLayout />
+      </DarkModeProvider>
   );
 }
 
