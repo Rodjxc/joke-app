@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Layout as AntdLayout, Menu, theme } from "antd";
 import { useDarkMode } from "../../contexts/DarkModeContext";
-import Navbar from "./Navbar/navbar";
+import Navbar from "./Navbar/Navbar";
 import "./display.css";
 import { useTranslation } from "react-i18next";
 import DisplayJokes from "../JokeApp/JokeApp";
@@ -58,7 +58,7 @@ const CustomLayout = () => {
   } = theme.useToken();
 
   const { darkMode } = useDarkMode();
-  const { t } = useTranslation('translation');
+  const { t } = useTranslation("translation");
 
   return (
     <AntdLayout>
@@ -66,6 +66,7 @@ const CustomLayout = () => {
         <Navbar />
       </Header>
       <AntdLayout>
+        {/* If the project scales further, this will also be a component vvvvvv*/}
         <Sider width={256}>
           <Menu
             mode="inline"
@@ -107,9 +108,8 @@ const CustomLayout = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <DisplayJokes/>
-            </ Content>
-          
+            <DisplayJokes />
+          </Content>
         </AntdLayout>
       </AntdLayout>
     </AntdLayout>

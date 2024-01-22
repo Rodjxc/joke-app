@@ -81,7 +81,7 @@ const App: React.FC = () => {
         form.resetFields(); // Reset form after submission
       })
       .catch((error) => {
-        console.log('Validating Failed:', error);
+        console.log("Validating Failed:", error);
       });
   };
 
