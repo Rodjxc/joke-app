@@ -8,7 +8,7 @@ import { Logo } from "./Logo/Logo";
 
 const { Header } = Layout;
 
-export const Navbar: React.FC = () => {
+const Navbar: React.FC = () => {
   //We access the dark mode state
   const { darkMode } = useDarkMode();
   //we import the i18n to translate the pages.
@@ -51,3 +51,4 @@ export const Navbar: React.FC = () => {
 };
 
 
+export default Navbar; 

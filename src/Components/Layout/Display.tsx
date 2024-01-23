@@ -8,10 +8,10 @@ import {
 } from "@ant-design/icons";
 import { Layout as AntdLayout, Menu, theme } from "antd";
 import { useDarkMode } from "../../contexts/DarkModeContext";
-import { Navbar } from "./Navbar/Navbar";
 import "./display.css";
 import { useTranslation } from "react-i18next";
 import DisplayJokes from "../JokeApp/JokeApp";
+import Navbar from "./Navbar/Navbar";
 
 const { Header, Content, Sider } = AntdLayout;
 
@@ -63,7 +63,7 @@ const CustomLayout = () => {
   return (
     <AntdLayout>
       <Header className="header-navbar">
-        <Navbar />
+       <Navbar />
       </Header>
       <AntdLayout>
         {/* If the project scales further, this will also be a component vvvvvv*/}
