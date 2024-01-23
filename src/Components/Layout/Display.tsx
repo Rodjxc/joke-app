@@ -8,7 +8,7 @@ import {
 } from "@ant-design/icons";
 import { Layout as AntdLayout, Menu, theme } from "antd";
 import { useDarkMode } from "../../contexts/DarkModeContext";
-import Navbar from "./Navbar/Navbar";
+import { Navbar } from "./Navbar/Navbar";
 import "./display.css";
 import { useTranslation } from "react-i18next";
 import DisplayJokes from "../JokeApp/JokeApp";
