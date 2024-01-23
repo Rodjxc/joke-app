@@ -11,7 +11,7 @@ import { useDarkMode } from "../../contexts/DarkModeContext";
 import "./display.css";
 import { useTranslation } from "react-i18next";
 import DisplayJokes from "../JokeApp/JokeApp";
-import Navbar from "./Navbar/NavbarTemp";
+import Navbar from "./Navbar/Navbar";
 
 const { Header, Content, Sider } = AntdLayout;
 
