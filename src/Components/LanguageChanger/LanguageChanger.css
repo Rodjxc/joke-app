@@ -1,0 +1,15 @@
+.navbar-language {
+    margin-top: 10px;
+  }
+  
+  .flag-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .language-flag {
+    width: 20px;
+    height: auto;
+  }
