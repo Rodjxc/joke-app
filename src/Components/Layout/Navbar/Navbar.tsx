@@ -8,17 +8,33 @@ import { useDarkMode } from "../../../Context/useDarkMode";
 const { Header } = Layout;
 
 export const Navbar = () => {
-	//We access the dark mode state
+	// Access the dark mode state
 	const { darkMode } = useDarkMode();
-	//we import the i18n to translate the pages.
+	// Import the i18n to translate the pages
 	const { t } = useTranslation("translation");
+
+	// Define menu items
+	const menuItems = [
+		{
+			key: "submit",
+			label: <a href="/submit">{t("navbar.submit")}</a>,
+		},
+		{
+			key: "about",
+			label: <a href="/about">{t("navbar.about")}</a>,
+		},
+		{
+			key: "video",
+			label: <a href="/video">{t("navbar.video")}</a>,
+		},
+	];
 
 	return (
 		<Header className={`navbar ${darkMode ? "dark-mode" : ""}`}>
 			{/* Logo */}
 			<h1>Joke App</h1>
 
-			{/* Middle: this could be separated in further components if they get given any use in the future */}
+			{/* Middle: this could be separated into further components if they get given any use in the future */}
 			<Menu
 				mode="horizontal"
 				className="navbar-pages"
@@ -26,22 +42,9 @@ export const Navbar = () => {
 					background: darkMode ? "#333" : "",
 					color: darkMode ? "white" : "inherit",
 				}}
-			>
-				<Menu.Item key="submit">
-					<a>{t("navbar.submit")}</a>
-				</Menu.Item>
-				<Menu.Item key="about">
-					<a>{t("navbar.about")}</a>
-				</Menu.Item>
-				<Menu.Item key="video">
-					<a>{t("navbar.video")}</a>
-				</Menu.Item>
-			</Menu>
-
-			{/* Language */}
+				items={menuItems} // Use the items prop instead of children
+			/>
 			<LanguageChanger />
-
-			{/* Dark Mode Button */}
 			<DarkMode />
 		</Header>
 	);
