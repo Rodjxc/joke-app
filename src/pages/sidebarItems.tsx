@@ -6,13 +6,7 @@ import {
 	FormOutlined,
 	WarningOutlined,
 } from "@ant-design/icons";
-
-export type SidebarItem = {
-	key: string;
-	icon?: React.ReactNode;
-	labelKey?: string;
-	isDivider?: boolean;
-};
+import type { SidebarItem } from "./sidebarTypes";
 
 export const sidebarItems: SidebarItem[] = [
 	{

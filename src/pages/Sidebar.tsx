@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDarkMode } from "../Context/useDarkMode";
 import { sidebarItems } from "./sidebarItems";
 
-export const Sidebar: React.FC = () => {
+export const Sidebar = () => {
 	const { darkMode } = useDarkMode();
 	const { t } = useTranslation("translation");
 
