@@ -1,22 +1,11 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import { Table, Modal, Button, Form, Input, TablePaginationConfig, Checkbox } from "antd";
+import { Table, Modal, Button, Form, Input, type TablePaginationConfig, Checkbox } from "antd";
 import { useDarkMode } from "../../contexts/DarkModeContext";
 import { useTranslation } from "react-i18next";
+import type { Joke } from "../../client/apiTypes";
 
-interface Joke {
-  id: number;
-  category: string;
-  joke: string;
-  flags: {
-    nsfw: boolean;
-    religious: boolean;
-    political: boolean;
-    racist: boolean;
-    sexist: boolean;
-    explicit: boolean;
-  };
-}
+
 
 const App: React.FC = () => {
   const [jokes, setJokes] = useState<Joke[]>([]);
