@@ -4,7 +4,6 @@ import DarkMode from "./DarkMode/DarkMode";
 import "./navbar.css";
 import { useDarkMode } from "../../../contexts/DarkModeContext";
 import LanguageChanger from "./LanguageChanger/LanguageChanger";
-import { Logo } from "./Logo/Logo";
 
 const { Header } = Layout;
 
@@ -17,9 +16,7 @@ const Navbar: React.FC = () => {
   return (
     <Header className={`navbar ${darkMode ? "dark-mode" : ""}`}>
       {/* Logo */}
-      <Space>
-        <Logo />
-      </Space>
+     <h1>Joke App</h1>
 
       {/* Middle: this could be separated in further components if they get given any use in the future */}
       <Menu
