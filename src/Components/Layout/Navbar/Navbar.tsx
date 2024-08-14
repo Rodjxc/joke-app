@@ -1,9 +1,9 @@
 import { Layout, Menu } from "antd";
 import { useTranslation } from "react-i18next";
-import DarkMode from "./DarkMode/DarkMode";
 import "./navbar.css";
 import { LanguageChanger } from "./LanguageChanger/LanguageChanger";
 import { useDarkMode } from "../../../Context/useDarkMode";
+import { DarkModeSwitch } from "../../DarkMode/DarkModeSwitch";
 
 const { Header } = Layout;
 
@@ -45,7 +45,7 @@ export const Navbar = () => {
 				items={menuItems} // Use the items prop instead of children
 			/>
 			<LanguageChanger />
-			<DarkMode />
+			<DarkModeSwitch />
 		</Header>
 	);
 };
