@@ -8,9 +8,7 @@ import { DarkModeSwitch } from "../../DarkMode/DarkModeSwitch";
 const { Header } = Layout;
 
 export const Navbar = () => {
-	// Access the dark mode state
 	const { darkMode } = useDarkMode();
-	// Import the i18n to translate the pages
 	const { t } = useTranslation("translation");
 
 	// Define menu items
