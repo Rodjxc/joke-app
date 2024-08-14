@@ -1,6 +1,6 @@
 import { Layout as AntdLayout, theme } from "antd";
 import "./Display.css";
-import DisplayJokes from "../JokeApp/JokeApp";
+import { JokeApp } from "../JokeApp/JokeApp";
 import { Navbar } from "./Navbar/Navbar";
 import { Sidebar } from "../../pages/Sidebar";
 import { useDarkMode } from "../../Context/useDarkMode";
@@ -38,7 +38,7 @@ export const CustomLayout = () => {
 							borderRadius: borderRadiusLG,
 						}}
 					>
-						<DisplayJokes />
+						<JokeApp />
 					</Content>
 				</AntdLayout>
 			</AntdLayout>

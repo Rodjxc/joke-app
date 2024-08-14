@@ -13,7 +13,7 @@ import { useTranslation } from "react-i18next";
 import type { Joke } from "../../client/apiTypes";
 import { useDarkMode } from "../../Context/useDarkMode";
 
-const App: React.FC = () => {
+export const JokeApp = () => {
 	const [jokes, setJokes] = useState<Joke[]>([]);
 	const [loading, setLoading] = useState(false);
 
@@ -176,5 +176,3 @@ const App: React.FC = () => {
 		</div>
 	);
 };
-
-export default App;
