@@ -2,8 +2,8 @@ import { Layout as AntdLayout, theme } from "antd";
 import "./Display.css";
 import { JokeApp } from "../JokeApp/JokeApp";
 import { Navbar } from "./Navbar/Navbar";
-import { Sidebar } from "../../pages/Sidebar";
 import { useDarkMode } from "../../Context/useDarkMode";
+import { Sidebar } from "./Sidebar/Sidebar";
 
 const { Header, Content, Sider } = AntdLayout;
 

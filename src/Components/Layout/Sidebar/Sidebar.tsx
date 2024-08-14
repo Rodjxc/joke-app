@@ -1,8 +1,8 @@
 import { Menu } from "antd";
 import type { MenuProps } from "antd";
 import { useTranslation } from "react-i18next";
-import { useDarkMode } from "../Context/useDarkMode";
 import { sidebarItems } from "./sidebarItems";
+import { useDarkMode } from "../../../Context/useDarkMode";
 
 export const Sidebar = () => {
 	const { darkMode } = useDarkMode();
