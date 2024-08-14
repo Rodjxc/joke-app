@@ -1,9 +1,8 @@
 import { Layout, Menu } from "antd";
 import { useTranslation } from "react-i18next";
-import "./navbar.css";
 import { LanguageChanger } from "./LanguageChanger/LanguageChanger";
-import { useDarkMode } from "../../../Context/useDarkMode";
 import { DarkModeSwitch } from "../../DarkMode/DarkModeSwitch";
+import { useDarkMode } from "../../../Context/useDarkMode";
 
 const { Header } = Layout;
 
@@ -15,35 +14,58 @@ export const Navbar = () => {
 	const menuItems = [
 		{
 			key: "submit",
-			label: <a href="/submit">{t("navbar.submit")}</a>,
+			label: (
+				<a href="/submit" style={{ color: darkMode ? "white" : "black" }}>
+					{t("navbar.submit")}
+				</a>
+			),
 		},
 		{
 			key: "about",
-			label: <a href="/about">{t("navbar.about")}</a>,
+			label: (
+				<a href="/about" style={{ color: darkMode ? "white" : "black" }}>
+					{t("navbar.about")}
+				</a>
+			),
 		},
 		{
 			key: "video",
-			label: <a href="/video">{t("navbar.video")}</a>,
+			label: (
+				<a href="/video" style={{ color: darkMode ? "white" : "black" }}>
+					{t("navbar.video")}
+				</a>
+			),
 		},
 	];
 
 	return (
-		<Header className={`navbar ${darkMode ? "dark-mode" : ""}`}>
+		<Header
+			className={`flex justify-between items-center px-5 ${
+				darkMode
+					? "bg-black border-b border-gray-700"
+					: "bg-white border-b border-gray-300"
+			}`}
+		>
 			{/* Logo */}
-			<h1>Joke App</h1>
+			<h1
+				className={`text-xl font-bold ${darkMode ? "text-white" : "text-black"}`}
+			>
+				Joke App
+			</h1>
 
-			{/* Middle: this could be separated into further components if they get given any use in the future */}
+			{/* Menu */}
 			<Menu
 				mode="horizontal"
-				className="navbar-pages"
 				style={{
-					background: darkMode ? "#333" : "",
-					color: darkMode ? "white" : "inherit",
+					backgroundColor: darkMode ? "black" : "white", // Force the background color
+					borderBottom: "none",
 				}}
-				items={menuItems} // Use the items prop instead of children
+				items={menuItems}
 			/>
-			<LanguageChanger />
-			<DarkModeSwitch />
+			<div className="flex items-center space-x-4">
+				<LanguageChanger />
+				<DarkModeSwitch />
+			</div>
 		</Header>
 	);
 };

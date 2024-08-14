@@ -4,7 +4,7 @@ import type { Joke } from "../../client/apiTypes";
 interface EditJokeModalProps {
 	visible: boolean;
 	joke: Joke | null;
-	onSave: () => void;
+	onSave: (values: Partial<Joke>) => void; // Ensure onSave expects values
 	onCancel: () => void;
 }
 
@@ -19,11 +19,15 @@ export const EditJokeModal: React.FC<EditJokeModalProps> = ({
 	return (
 		<Modal
 			title="Edit Joke"
-			open={visible}
-			onOk={() => form.submit()}
+			visible={visible}
+			onOk={() => form.submit()} // Trigger form submission on OK
 			onCancel={onCancel}
 		>
-			<Form form={form} initialValues={joke} onFinish={onSave}>
+			<Form
+				form={form}
+				initialValues={joke || {}} // Ensure initialValues is set correctly
+				onFinish={onSave} // Pass the values to onSave when form is submitted
+			>
 				<Form.Item name="joke" label="Joke">
 					<Input />
 				</Form.Item>

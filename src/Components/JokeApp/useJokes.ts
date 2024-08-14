@@ -21,5 +21,5 @@ export const useJokes = (currentPage: number, pageSize: number) => {
 		fetchJokes();
 	}, [fetchJokes]);
 
-	return { jokes, loading };
+	return { jokes, loading, setJokes };
 };

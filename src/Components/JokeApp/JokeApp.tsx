@@ -9,7 +9,7 @@ export const JokeApp: React.FC = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [pageSize] = useState(10);
 	const totalJokes = 290;
-	const { jokes, loading } = useJokes(currentPage, pageSize);
+	const { jokes, loading, setJokes } = useJokes(currentPage, pageSize); // Now includes setJokes
 
 	const { darkMode } = useDarkMode();
 
@@ -25,7 +25,8 @@ export const JokeApp: React.FC = () => {
 		setIsModalVisible(true);
 	};
 
-	const handleSave = (values: any) => {
+	const handleSave = (values: Partial<Joke>) => {
+		// Adjusted type
 		if (editingJoke) {
 			setJokes((prevJokes) =>
 				prevJokes.map((joke) =>
