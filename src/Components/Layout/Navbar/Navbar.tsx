@@ -1,11 +1,11 @@
 import { Layout, Menu, Button, Drawer } from "antd";
-import "./Navbar.css";
 import { MenuOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LanguageChanger } from "./LanguageChanger/LanguageChanger";
 import { DarkModeSwitch } from "../../DarkMode/DarkModeSwitch";
 import { useDarkMode } from "../../../Context/useDarkMode";
+import { menuItems } from "./menuItems";
 
 const { Header } = Layout;
 
@@ -13,34 +13,6 @@ export const Navbar = () => {
 	const { darkMode } = useDarkMode();
 	const { t } = useTranslation("translation");
 	const [drawerVisible, setDrawerVisible] = useState(false);
-
-	// Define menu items
-	const menuItems = [
-		{
-			key: "submit",
-			label: (
-				<a href="/submit" style={{ color: darkMode ? "white" : "" }}>
-					{t("navbar.submit")}
-				</a>
-			),
-		},
-		{
-			key: "about",
-			label: (
-				<a href="/about" style={{ color: darkMode ? "white" : "" }}>
-					{t("navbar.about")}
-				</a>
-			),
-		},
-		{
-			key: "video",
-			label: (
-				<a href="/video" style={{ color: darkMode ? "white" : "" }}>
-					{t("navbar.video")}
-				</a>
-			),
-		},
-	];
 
 	// Show Drawer
 	const showDrawer = () => {
@@ -54,42 +26,49 @@ export const Navbar = () => {
 
 	return (
 		<Header
-			style={{
-				display: "flex",
-				justifyContent: "space-between",
-				alignItems: "center",
-				padding: "0 20px",
-				backgroundColor: darkMode ? "black" : "white",
-				borderBottom: darkMode ? "1px solid #444" : "1px solid #ddd",
-			}}
+			className={`flex justify-between items-center px-5 ${
+				darkMode
+					? "bg-black border-b border-gray-700"
+					: "bg-white border-b border-gray-300"
+			}`}
 		>
 			{/* Logo */}
-			<h1 style={{ color: darkMode ? "white" : "black" }}>Joke App</h1>
+			<h1
+				className={`text-xl font-bold ${darkMode ? "text-white" : "text-black"}`}
+			>
+				Joke App
+			</h1>
 
 			{/* Desktop Menu */}
 			<Menu
 				mode="horizontal"
 				theme={darkMode ? "dark" : "light"}
+				className="hidden md:flex flex-1 justify-center"
 				style={{
-					flex: 1,
-					justifyContent: "center",
 					backgroundColor: darkMode ? "black" : "white",
 					borderBottom: "none",
-					display: "none",
 				}}
-				className="menu-desktop"
-				items={menuItems}
+				items={menuItems.map((item) => ({
+					key: item.key,
+					label: (
+						<a
+							href={item.route}
+							style={{ color: darkMode ? "white" : "black" }}
+						>
+							{t(item.translationKey)}
+						</a>
+					),
+				}))}
 			/>
 
 			{/* Mobile Menu Button */}
 			<Button
 				icon={<MenuOutlined />}
 				onClick={showDrawer}
+				className="block md:hidden"
 				style={{
-					display: "block",
 					color: darkMode ? "white" : "black",
 				}}
-				className="menu-mobile-button"
 			/>
 
 			{/* Drawer for Mobile Menu */}
@@ -106,11 +85,21 @@ export const Navbar = () => {
 				<Menu
 					mode="vertical"
 					theme={darkMode ? "dark" : "light"}
-					items={menuItems}
+					items={menuItems.map((item) => ({
+						key: item.key,
+						label: (
+							<a
+								href={item.route}
+								style={{ color: darkMode ? "white" : "black" }}
+							>
+								{t(item.translationKey)}
+							</a>
+						),
+					}))}
 				/>
 			</Drawer>
 
-			<div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+			<div className="flex items-center space-x-4">
 				<LanguageChanger />
 				<DarkModeSwitch />
 			</div>
