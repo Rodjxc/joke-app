@@ -28,7 +28,7 @@ export const Navbar = () => {
 		<Header
 			className={`flex justify-between items-center px-5 ${
 				darkMode
-					? "bg-black border-b border-gray-700"
+					? "bg-black border-b border-gray-200"
 					: "bg-white border-b border-gray-300"
 			}`}
 		>

@@ -28,8 +28,13 @@ export const Sidebar = () => {
 		<Menu
 			mode="inline"
 			defaultSelectedKeys={["overview"]}
-			className={`h-full border-r-0 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-black"}`}
+			style={{
+				height: "100%",
+				borderRight: 0,
+				backgroundColor: darkMode ? "#333333" : "white",
+			}}
 			items={menuItems}
+			theme={darkMode ? "dark" : "light"}
 		/>
 	);
 };
