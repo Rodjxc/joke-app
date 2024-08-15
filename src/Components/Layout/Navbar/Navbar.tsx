@@ -26,15 +26,18 @@ export const Navbar = () => {
 
 	return (
 		<Header
-			className={`flex justify-between items-center px-5 ${
-				darkMode
-					? "bg-black border-b border-gray-200"
-					: "bg-white border-b border-gray-300"
-			}`}
+			style={{
+				display: "flex",
+				justifyContent: "space-between",
+				alignItems: "center",
+				padding: "0 20px",
+				backgroundColor: darkMode ? "#333333" : "white", // Match the background color of the Sidebar
+				borderBottom: darkMode ? "1px solid #444" : "1px solid #ddd",
+			}}
 		>
 			{/* Logo */}
 			<h1
-				className={`text-xl font-bold ${darkMode ? "text-white" : "text-black"}`}
+				className={`text-2xl font-bold ${darkMode ? "text-white" : "text-black"}`}
 			>
 				Joke App
 			</h1>
@@ -45,7 +48,7 @@ export const Navbar = () => {
 				theme={darkMode ? "dark" : "light"}
 				className="hidden md:flex flex-1 justify-center"
 				style={{
-					backgroundColor: darkMode ? "black" : "white",
+					backgroundColor: darkMode ? "#333333" : "white", // Match the background color
 					borderBottom: "none",
 				}}
 				items={menuItems.map((item) => ({
@@ -78,7 +81,7 @@ export const Navbar = () => {
 				onClose={onClose}
 				open={drawerVisible}
 				bodyStyle={{
-					backgroundColor: darkMode ? "black" : "white",
+					backgroundColor: darkMode ? "#333333" : "white", // Match the background color
 					color: darkMode ? "white" : "black",
 				}}
 			>
