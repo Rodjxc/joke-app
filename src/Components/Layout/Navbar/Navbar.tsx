@@ -31,7 +31,7 @@ export const Navbar = () => {
 				justifyContent: "space-between",
 				alignItems: "center",
 				padding: "0 20px",
-				backgroundColor: darkMode ? "#333333" : "white", // Match the background color of the Sidebar
+				backgroundColor: darkMode ? "#333333" : "white",
 				borderBottom: darkMode ? "1px solid #444" : "1px solid #ddd",
 			}}
 		>
@@ -48,7 +48,7 @@ export const Navbar = () => {
 				theme={darkMode ? "dark" : "light"}
 				className="hidden md:flex flex-1 justify-center"
 				style={{
-					backgroundColor: darkMode ? "#333333" : "white", // Match the background color
+					backgroundColor: darkMode ? "#333333" : "white",
 					borderBottom: "none",
 				}}
 				items={menuItems.map((item) => ({
@@ -66,11 +66,18 @@ export const Navbar = () => {
 
 			{/* Mobile Menu Button */}
 			<Button
-				icon={<MenuOutlined />}
+				icon={
+					<MenuOutlined
+						style={{
+							color: darkMode ? "white" : "black", // White lines in dark mode, black lines in light mode
+						}}
+					/>
+				}
 				onClick={showDrawer}
 				className="block md:hidden"
 				style={{
-					color: darkMode ? "white" : "black",
+					border: darkMode ? "1px solid white" : "none", // White border in dark mode
+					backgroundColor: darkMode ? "#333333" : "white", // Dark gray background in dark mode
 				}}
 			/>
 
@@ -80,8 +87,8 @@ export const Navbar = () => {
 				placement="right"
 				onClose={onClose}
 				open={drawerVisible}
-				bodyStyle={{
-					backgroundColor: darkMode ? "#333333" : "white", // Match the background color
+				style={{
+					backgroundColor: darkMode ? "#333333" : "white",
 					color: darkMode ? "white" : "black",
 				}}
 			>
@@ -99,6 +106,9 @@ export const Navbar = () => {
 							</a>
 						),
 					}))}
+					style={{
+						backgroundColor: darkMode ? "#000000" : "white",
+					}}
 				/>
 			</Drawer>
 

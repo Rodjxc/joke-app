@@ -9,7 +9,6 @@ interface EditJokeModalProps {
 }
 
 export const EditJokeModal: React.FC<EditJokeModalProps> = ({
-	visible,
 	joke,
 	onSave,
 	onCancel,
@@ -17,12 +16,7 @@ export const EditJokeModal: React.FC<EditJokeModalProps> = ({
 	const [form] = Form.useForm();
 
 	return (
-		<Modal
-			title="Edit Joke"
-			visible={visible}
-			onOk={() => form.submit()} // Trigger form submission on OK
-			onCancel={onCancel}
-		>
+		<Modal title="Edit Joke" onOk={() => form.submit()} onCancel={onCancel}>
 			<Form
 				form={form}
 				initialValues={joke || {}} // Ensure initialValues is set correctly
